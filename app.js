@@ -28,7 +28,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public/public-asset')));
 app.use(session({secret:'key',cookie:{maxAge:60000000}}));
-require('.dotenv').config()
 app.use('/', usersRouter);
 app.use('/admin', adminRouter);
 // catch 404 and forward to error handler

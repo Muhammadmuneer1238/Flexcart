@@ -13,6 +13,8 @@ const cartModels = require("../models/cartModels");
 const orderSchema = require("../models/orderSchema");
 const Razorpay = require('razorpay');
 const crypto = require("crypto");
+require('dotenv').config()
+
 var instance = new Razorpay({
     key_id: process.env.RAZORPAY_KEYID,
     key_secret: process.env.RAZORPAY_KEYSECRET
