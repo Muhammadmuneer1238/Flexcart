@@ -1,0 +1,385 @@
+<main class="main">
+  <div
+    class="page-header text-center"
+    style="background-image: url('assets/images/page-header-bg.jpg')"
+  >
+    <div class="container">
+      <h1 class="page-title">Checkout</h1>
+    </div>
+    <!-- End .container -->
+  </div>
+  <!-- End .page-header -->
+  <nav aria-label="breadcrumb" class="breadcrumb-nav">
+    <div class="container">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Shop</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Checkout</li>
+      </ol>
+    </div>
+    <!-- End .container -->
+  </nav>
+  <!-- End .breadcrumb-nav -->
+
+  <div class="page-content">
+    <div class="checkout">
+      <div class="container">
+        <form id="submitCheckoutPage" >
+          <div class="row">
+            <div class="col-lg-9">
+              <h2 class="checkout-title">Billing Details</h2>
+              <!-- End .checkout-title -->
+              <div class="row">
+                <div class="col-sm-6">
+                  <label>First Name *</label>
+                  <input
+                    type="text"
+                    name="fname"
+                    class="form-control"
+                    value="<%=coupon.fname%>"
+                    required
+                  />
+                </div>
+                <!-- End .col-sm-6 -->
+
+                <div class="col-sm-6">
+                  <label>Last Name *</label>
+                  <input
+                    type="text"
+                    name="lname"
+
+                    class="form-control"
+                    value="<%=coupon.lname%>"
+                    required
+                  />
+                </div>
+                <!-- End .col-sm-6 -->
+              </div>
+              <!-- End .row -->
+
+              
+
+              <label>Country *</label>
+              <input
+                type="text"
+                name="country"
+
+                class="form-control"
+                value="<%=coupon.country%>"
+                required
+              />
+
+              <label>Street address *</label>
+              <input
+                type="text"
+                name="street"
+
+                class="form-control"
+                value="<%=coupon.house%>"
+                placeholder="House number and Street name"
+                required
+              />
+             
+              <div class="row">
+                <div class="col-sm-6">
+                  <label>Town / City *</label>
+                  <input
+                    type="text"
+                    name="town"
+
+                    value="<%=coupon.country%>"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <!-- End .col-sm-6 -->
+
+                <div class="col-sm-6">
+                  <label>State / County *</label>
+                  <input
+                    type="text"
+                    name="state"
+
+                    class="form-control"
+                    value="<%=coupon.country%>"
+                    required
+                  />
+                </div>
+                <!-- End .col-sm-6 -->
+              </div>
+              <!-- End .row -->
+
+              <div class="row">
+                <div class="col-sm-6">
+                  <label>Postcode / ZIP *</label>
+                  <input
+                    type="text"
+                    name="pincode"
+
+                    class="form-control"
+                    value="<%=coupon.pincode%>"
+                    required
+                  />
+                </div>
+                <!-- End .col-sm-6 -->
+
+                <div class="col-sm-6">
+                  <label>Phone *</label>
+                  <input
+                    type="tel"
+                    name="mobile"
+
+                    class="form-control"
+                    value="<%=coupon.phone%>"
+                    required
+                  />
+                </div>
+                <!-- End .col-sm-6 -->
+              </div>
+              <!-- End .row -->
+
+              <label>Email address *</label>
+              <input
+                type="email"
+                name="email"
+
+                class="form-control"
+                value="<%=coupon.email%>"
+                required
+              />
+
+              
+              <label>Order notes (optional)</label>
+              <textarea
+                class="form-control"
+                name="message"
+                cols="30"
+                rows="4"
+                placeholder="Notes about your order, e.g. special notes for delivery"
+              ></textarea>
+             
+            </div>
+       
+           
+            <!-- End .col-lg-9 -->
+            <aside class="col-lg-3">
+              <div class="summary">
+                <h3 class="summary-title">Purchase Order</h3>
+                <!-- End .summary-title -->
+
+                <table class="table table-summary">
+                 
+
+                 
+                    <tr class="summary-subtotal">
+                      <td>Subtotal:</td>
+                      <td name="subtotal"><%=total.total%></td>
+                    </tr>
+                    <tr>
+                        
+                           
+                              
+
+                        <form>
+                              <div class="cart-discount">
+                                
+                                  <div class="input-group">
+                                    <input
+                                      type="text"
+                                      class="form-control"
+                                      id="couponcode"
+                                      placeholder="coupon code">
+                                  
+                                      <button onclick="applyCoupon()" class="btn btn-secondary-1" type="button">
+                                        <i class="icon-long-arrow-right"></i>
+                                      </button></input> 
+                                    
+                                  </div>
+                                                                 
+                              </div>
+                            </form>
+                       </div>
+                                              </tr>
+                    <tr class="summary-offerprice"> 
+                        <td>Offer Price:</td>
+                        <td><span id="offerPrice" name="offerprice"></span></td>
+                       </tr>
+                    <tr>
+                      <td>Shipping:</td>
+                      <td>Free shipping</td>
+                      </tr>
+                      <tr class="summary-total">
+                        <td>Total: </td>
+                        <td>
+                            <input id='totalPrice' name="total" class="d-none" value="<%= total.total %>">
+                            <span id="totalSpan"><%= total.total %></span></input></td>
+                        </tr>
+                        <tr class="summary-shipping-estimate ">
+                          <td>
+                            Estimate for Your Country<br />
+                            <a href="/selectAddress">Change address</a>
+                          </td>
+                          <td>&nbsp;</td>
+                        </tr> 
+                      
+                    End .summary-total
+                  </tbody>
+                </table>
+
+                <div class="p-3">
+                  <td>Payment Methods:<br></td>
+                  <div><label>
+                                           
+                        <input type="radio" name="paymentMethod" value="online">
+                        Online Payment
+                      </label>
+                      <br>
+                      <label>
+                        <input type="radio" name="paymentMethod" value="cod">
+                        Cash on delivery
+                      </label>
+                      <br>
+                      <label>
+                        <input type="radio" name="paymentMethod" value="bankTransfer">
+                        Bank Transfer
+                      </label>
+                    </div>
+                </div>
+                
+
+                <button
+                  type="submit"
+                  class="btn btn-outline-primary-2 btn-order btn-block"
+                >
+                  <span class="btn-text">Place Order</span>
+                  <span class="btn-hover-text">Proceed to Checkout</span>
+                </button>
+              </div>
+              <!-- End .summary -->
+            </aside>
+            <!-- End .col-lg-3 -->
+          </div>
+          <!-- End .row -->
+        </form>
+       
+      </div>
+      <!-- End .container -->
+    </div>
+    <!-- End .checkout -->
+  </div>
+  <!-- End .page-content -->
+</main>
+
+
+
+<script>
+  
+  function applyCoupon() {
+    let couponCode = $("#couponcode").val();
+    $.ajax({
+      url: "/applyCoupon",
+      data: {
+        couponcode: couponCode,
+      },
+      method: "post",
+
+      success: (response) => {
+        document.getElementById('offerPrice').innerHTML=response.offerTotal
+        $('#totalPrice').prop('value',response.offerTotal)
+        $('#totalSpan').html(response.offerTotal)
+        if(response.couponId == couponCode){
+        Toastify({
+          text: "Coupon Applied successfully!",
+          duration: 5000,
+          gravity: "bottom",
+          position: "center",
+          style: {
+            background: "#000000",
+          },
+        }).showToast();
+      }else{
+        Toastify({
+          text: "Fuck Off!!",
+          duration: 5000,
+          gravity: "bottom",
+          position: "center",
+          style: {
+            background: "#000000",
+          },
+        }).showToast();
+
+      }
+        console.log(response);
+      },
+    });
+  }
+
+  $("#submitCheckoutPage").submit((e)=>{
+    e.preventDefault()
+         $.ajax({
+      url:'/placeOrder',
+      data: $('#submitCheckoutPage').serialize(),
+      method:'post',
+      success:(response)=>{
+        console.log("response in placeOrder",response);
+        if(response.codStatus){
+        console.log("res",response)
+        location.href="/placed"
+      }else{
+        razorpaypayment(response)
+         
+        }
+         
+      }
+    })
+  })
+   function razorpaypayment (order) 
+       {
+            console.log("orderrererer", order);
+            var options = {
+                "key":'rzp_test_1WQClS1xPA1rwL', // Enter the Key ID generated from the Dashboard
+                "amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                "currency": "INR",
+                "name": "Flexcart Shopping", //your business name
+                "description": "Order Payment",
+                "image": "/assets/images/demos/demo-7/logo2.png",
+                "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+                "handler": function (response) {
+                verifyPayment(response, order)
+                }, 
+                "prefill": {
+                    "name": "Muneer", //your customer's name
+                    "email": "abc@gmail.com",
+                    "contact": "9000090000"
+                },
+                "notes": {
+                    "address": "Razorpay Corporate Office"
+                },
+                "theme": {
+                    "color": "#3399cc"
+                }
+            };
+            var rzp1 = new Razorpay(options);
+            rzp1.open()
+    }
+    function verifyPayment(response,order)
+    {
+      $.ajax({
+      url:'/verify-payment',
+      data:{
+        response:response,
+        order:order,
+      },
+      method:'post',
+      success:(response)=>{
+        if(response.status){
+          location.href='/placed'
+        }else{
+          location.href='/orderDetails'
+        }
+ 
+      }
+    })
+  }
+
+</script>

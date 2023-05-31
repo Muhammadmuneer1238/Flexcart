@@ -1,0 +1,66 @@
+<main>
+  <section class="vh-100" style="background-color: #ffffff">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-4 aside-top">
+          <a href="index.html" class="brand-wrap">
+            <img
+              src="/assets/images/demos/demo-7/logo1.png"
+              class="logo"
+              alt="Flexcart Dashboard"
+            />
+          </a>
+        </div>
+        <div class="col-8 col-md-8 col-lg-6 col-xl-5">
+          <div class="card shadow-2-strong" style="border-radius: 1rem;background-color: rgb(241, 208, 229);">
+            <div class="card-body p-5 text-center">
+              <h3 class="mb-5">Sign in</h3>
+              <form action="/admin/admin-login" method="post">
+                <div class="form-outline mb-4">
+                  <input
+                    id="typeEmailX-2"
+                    name="username"
+                    class="form-control form-control-lg"
+                  />
+                  <label class="form-label" style=" font-weight: 200;" required for="typeEmailX-2"
+                    >Email</label
+                  >
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input
+                    name="password"
+                    type="password"
+                    id="typePasswordX-2"
+                    class="form-control form-control-lg"
+                  />
+                  <label class="form-label" required for="typePasswordX-2"
+                    >Password</label
+                  >
+                </div>
+
+                <!-- Checkbox -->
+                <div class="form-check d-flex justify-content-start mb-4">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    name="password"
+                    id="form1Example3"
+                  />
+                  <label class="form-check-label" for="form1Example3">
+                    Remember password
+                  </label>
+                </div>
+
+                <button class="btn btn-primary btn-lg btn-block" type="submit">
+                  Login
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

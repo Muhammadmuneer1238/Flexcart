@@ -1,0 +1,25 @@
+<div class="container p-5">
+  <div class="row">
+    <%data.forEach((datas)=>{%>
+    <div class="col-md-4 p-3">
+      <div class="card m-3" style="width: 18rem">
+        <div class="card-body">
+          <h5 class="card-title text-center"><%=datas.couponId%></h5>
+          <h6 class="card-subtitle mb-2 text-muted text-center">
+            Valid till <%=datas.percentage%>
+          </h6>
+          <p class="card-text"><%=datas.expiryDate%><br /><%=datas.message%></p>
+          <button class="card-link btn-remove btn-danger">Remove coupon</button>
+        </div>
+      </div>
+    </div>
+    <%})%>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <a style="color: aliceblue" href="/admin/couponValid">
+        <button class="btn btn-primary me-md-2" type="button">
+          Add new
+        </button></a
+      >
+    </div>
+  </div>
+</div>

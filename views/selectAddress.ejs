@@ -1,0 +1,56 @@
+<div class="container>">
+  <div class="float-right">
+    <button class="btn btn-success"><a href="/defaultAddress">Add new address</a></button>
+  </div>
+  <div class="row">
+    <%data.forEach(function(datas){%>
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Address:</h5>
+          <p class="card-text text-center">
+            <%=datas.fname%> <%=datas.lname%> <br />
+            <%=data.homeaddress%><br />
+            <%=datas.country%><br />
+            <%=datas.email%><br />
+            <%=datas.phone%><br />
+    <%if(!datas.status){%>
+            <button
+              id="<%=datas._id%>"
+              onclick="AddressDef('<%=datas._id%>','<%=datas.status%>')"
+              class="btn btn-primary"
+            >
+              Set as Default
+            </button>
+            <%}else{%>
+              <button
+              id="<%=datas._id%>"
+             href="/"
+              class="btn btn-success"
+            >
+            Active address
+          </button>
+          <%}%>
+          </p>
+        </div>
+      </div>
+    </div>
+    <%})%>
+  </div>
+</div>
+<script>
+  function AddressDef(id, status) {
+    $.ajax({
+      url: "/setAddressDefault",
+      data: {
+        addId: id,
+        status: status,
+      },
+      method: "post",
+      success: (response) => {
+        $(`#${id}`).addClass("d-none");
+        location.reload();
+      },
+    });
+  }
+</script>

@@ -1,0 +1,74 @@
+
+            <div class="container p-5 ">
+               
+                <div >
+                <h2 class="title mb-1">Got Any offers?</h2><!-- End .title mb-2 -->
+                <p class="p-2"><span>Use the form below to add a Coupon</span></p>
+
+                <form action="/admin/couponValidation" method="post" class="contact-form mb-3">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label for="cname" class="sr-only">Coupon code</label>
+                            <input type="text" class="form-control" id="couponId" name="couponId" placeholder="Coupon code" required="">
+                        </div><!-- End .col-sm-6 -->
+
+                        <div class="col-sm-6">
+                            <label for="cemail" class="sr-only">Date of  Expiry</label>
+                            <input type="date" class="form-control" id="expirydate" name="expirydate" placeholder="Email *" required="">
+                        </div><!-- End .col-sm-6 -->
+                    </div><!-- End .row -->
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label for="cphone" class="sr-only">Offer Percentage </label>
+                            <input type="number" class="form-control" name="percentage"id="percentage" >
+                        </div><!-- End .col-sm-6 -->
+
+                        <div class="col-sm-6">
+                            <label for="csubject" class="sr-only">Maximum  offer Price</label>
+                            <input type="text" class="form-control"name="maxAmount" id="maxAmount">
+                        </div><!-- End .col-sm-6 -->
+                    </div><!-- End .row -->
+
+                    <label for="cmessage" class="sr-only">Message</label>
+                    <textarea class="form-control" cols="30" rows="4" id="message" name="message" placeholder="Message *"></textarea>
+
+                    <button type="submit" class="btn btn-danger btn-minwidth-sm m-3">
+                        <span>SUBMIT</span>
+                        <i class="icon-long-arrow-right"></i>
+                    </button>
+                    
+                        <a style="color: aliceblue;"  href="/admin/coupons"><button class="btn btn-primary " type="button" >View All</button></a>
+                      
+                </form><!-- End .contact-form -->
+                <div class="alert alert-primary" role="alert">
+This is a primary alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+</div>
+            </div><!-- End .col-lg-6 -->
+        </div><!-- End .row -->
+        </div>
+
+
+
+        <div class="container mt-5">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-5">
+                    <div class="card">
+                        <div class="text-right p-2"> <img src="https://i.imgur.com/w68MQc4.png" width="120"> </div>
+                        <div class="text-center"> <small class="text-uppercase flat">Flat</small> </div>
+                        <div class="d-flex justify-content-center px-2">
+                            <div class="d-flex flex-row">
+                                <h1 class="mt-0 off">50% OFF</h1> <sup class="mt-2 text-primary star">*</sup>
+                            </div>
+                        </div>
+                        <div class="line">
+                            <hr>
+                        </div>
+                        <div class="text-center mb-5"> <span class="text-uppercase">Valid till 23 august</span> </div>
+                        <div class="text-right p-1"> <small>*T&C APPLY</small> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
