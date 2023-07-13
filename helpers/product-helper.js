@@ -4,11 +4,10 @@ const multer = require("multer")
 
 module.exports = {
     addproduct: (ProDetails, images) => {
-        console.log(ProDetails);
         return new Promise((resolve, reject) => {
             var Products = new productModel({
                 productname: ProDetails.productname,
-                ProdDesc: ProDetails.ProdDesc,
+                ProDesc: ProDetails.ProdDesc,
                 brand: ProDetails.brand,
                 price: ProDetails.price,
                 mycategory: ProDetails.mycategory,
@@ -34,6 +33,14 @@ module.exports = {
         return new Promise(async (resolve, reject) => {
             await productModel.deleteOne({ _id: id })
             resolve()
+        })
+    },
+    editProductpage: (proId) => {
+
+        return new Promise(async(resolve, reject) => {
+           let product= await productModel.findOne({ _id: proId })
+                resolve(product)
+           
         })
     }
 }

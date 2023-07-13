@@ -58,7 +58,7 @@ module.exports = {
                         from: 'flexcartshopping@gmail.com>', // sender address
                         to: userData.email,
                         subject: "Email verification for the Flexkart account", // Subject line
-                        text: `Please click on the following link to verify your email address:http://localhost:3000/verify?token=${token}&username=${username}&email=${email}&mobile=${mobile}&password=${password}`,
+                        text: `Please click on the following link to verify your email address:http://flexcart.cloud/verify?token=${token}&username=${username}&email=${email}&mobile=${mobile}&password=${password}`,
                     };
                     transporter.sendMail(mailData, function (error, info) {
                         if (error) {
@@ -138,17 +138,10 @@ module.exports = {
                     resolve()
 
                 }
-
             }
-
-
-
-
         })
-
     },
     wishListItem: (proId, userId) => {
-
         let product = {
             productId: proId,
         }
@@ -163,7 +156,6 @@ module.exports = {
                     resolve()
                 })
             }
-
             else {
                 let exist = await wishlistModels.findOne({ "Items.productId": proId })
                 if (!exist)
@@ -188,10 +180,7 @@ module.exports = {
                     }
                 })
         })
-
     },
-
-
     wishlistPage: (userId) => {
         return new Promise(async (resolve, reject) => {
             let user = await wishlistModels.findOne({ userId: userId })
@@ -205,7 +194,6 @@ module.exports = {
                 resolve();
             }
         })
-
     },
     deleteWished: (proId, userId) => {
         return new Promise(async (resolve, reject) => {
@@ -219,8 +207,6 @@ module.exports = {
         return new Promise(async (resolve, reject) => {
 
             let cha = await cartModel.findOne({ userId: userId })
-
-
             await cartModel.updateOne({ userId: userId },
                 { $pull: { cartProduct: { productId: proId } } })
             resolve()
@@ -242,7 +228,6 @@ module.exports = {
                 await cartModel.updateOne({ "cartProduct.productId": proId },
                     { $inc: { "cartProduct.$.quantity": count } })
                 resolve()
-
             }
         })
     },
@@ -284,14 +269,11 @@ module.exports = {
                 resolve()
             }
         })
-
-
     },
     selectAdd: (userId) => {
         return new Promise(async (resolve, reject) => {
             let data = await addressModel.findOne({ userId: userId })
             resolve(data)
-
         })
     },
     setDefaultButton: (userId, addId, status) => {
@@ -311,8 +293,6 @@ module.exports = {
                 resolve()
             }
         })
-
-
     },
     checkOutAddress: (userId) => {
         return new Promise(async (resolve, reject) => {
@@ -324,9 +304,7 @@ module.exports = {
                 })
                     .then(async (datas) => {
                         const data = await datas.userAddress.find(obj => obj.status == true);
-
-
-                        await cartModel.findOne({ userId: userId })
+                       await cartModel.findOne({ userId: userId })
                             .populate("cartProduct.productId").then((carts) => {
                                 let cart = carts.cartProduct
                                 let total = cart.reduce((total, cart) => {
@@ -336,29 +314,23 @@ module.exports = {
                                 let obj = { coupon: data, carts: cart }
                                 resolve(obj)
                             })
-
                     })
             } else {
                 resolve()
             }
         })
-
-
     },
     CouponButton: (couponId, user) => {
         return new Promise(async (resolve, reject) => {
             let exist = await couponModels.findOne({ couponId: couponId })
             if (exist && Date.now() < exist.expiryDate) {
-
                 await cartModel.findOne({ userId: user })
                     .populate("cartProduct.productId").then((carts) => {
                         let cart = carts.cartProduct
                         let total = cart.reduce((total, cart) => {
                             return total + cart.productId.price * cart.quantity
                         }, 0)
-
                         let perAmount = (total * exist.percentage) / 100
-
                         if (perAmount > exist.maxAmount) {
                             cart.total = total - exist.maxAmount
                             let offerTotal = cart.total
@@ -369,7 +341,6 @@ module.exports = {
                             let offerTotal = cart.total
                             resolve({ offerTotal, couponId })
                         }
-
                     }).catch((error) => {
 
                     })

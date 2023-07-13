@@ -1,4 +1,4 @@
-const { addproduct, productView, deleteProduct } = require("../helpers/product-helper")
+const { addproduct, productView, deleteProduct, editProductpage } = require("../helpers/product-helper")
 const layout = "admin/adminLayout"
 const productModel = require("../models/productModels")
 const multer = require("multer")
@@ -13,7 +13,6 @@ module.exports = {
                 return image.filename
             })
             addproduct(req.body, files).then(() => {
-                console.log(req.body)
                 res.redirect("/admin/add-product")
             })
         }
@@ -24,11 +23,11 @@ module.exports = {
     viewProduct: (req, res) => {
         try {
             productView().then((product) => {
-                if(req.session.admin){
-                    let admin=req.session.admin
-                console.log("admin Id", admin);
-                res.render("admin/product-view", { admin, product, layout })}
-                else{
+                if (req.session.admin) {
+                    let admin = req.session.admin
+                    res.render("admin/product-view", { admin, product, layout })
+                }
+                else {
                     res.redirect('/admin/admin-login')
                 }
             })
@@ -46,8 +45,21 @@ module.exports = {
         catch
         {
             res.render("error")
-
         }
+    },
+    editPro: (req, res) => {
+        let proId = req.params.id
+        let admin = req.session.admin
+        console.log("ethiiii");
+        editProductpage(proId).then((product) => {
+            console.log("product", product);
+            res.render("admin/productEdit", { product, layout })
+
+        })
+    },
+    productEditpage: (req, res) => {
+
+
     }
 
 }

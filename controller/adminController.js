@@ -138,7 +138,8 @@ module.exports = {
     },
     indexPage: (req, res) => {
         let admin = req.session.user
-        res.render('admin/index', { layout, admin })
-    }
+        res.render('admin/index', { layout,admin})
+    },
+    
 
 }

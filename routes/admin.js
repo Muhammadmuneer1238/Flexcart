@@ -3,9 +3,9 @@ var router = express.Router();
 const { AddPage, adminpage, adminReg, adminLoginPage, userList,
     adminLogin, couponValidation, couponInsertion, coupons,
     userOrders, StatusChange, orderDetailView ,indexPage} = require("../controller/adminController");
-const { addProduct, viewProduct, deletePro } = require("../controller/productController");
+const { addProduct, viewProduct, deletePro,editPro,productEditpage } = require("../controller/productController");
 const multer = require("multer");
-const { index } = require('../controller/userController');
+const {  } = require('../controller/userController');
 const adminLogged = (req, res, next) => {
     if (req.session.admin) {
         next()
@@ -30,7 +30,7 @@ router.post("/admin-reg", adminReg);
 router.get("/admin-reg", adminpage);
 router.get("/admin-login", adminLoginPage);
 router.post("/admin-login", adminLogin);
-router.get("/product-view", adminLogged, viewProduct);
+router.get("/product-view",  viewProduct);
 router.get("/userlist", adminLogged, userList);
 router.get("/delete/:id", deletePro);
 router.get("/couponValid", adminLogged, couponValidation);
@@ -40,4 +40,6 @@ router.get("/orders", adminLogged, userOrders);
 router.post("/orderStatusChange", StatusChange);
 router.post("/orderDetail", orderDetailView);
 router.get("/",indexPage)
+router.get("/productEdit/:id",editPro)
+router.post("/editpro",)
 module.exports = router;
