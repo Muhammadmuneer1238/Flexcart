@@ -46,7 +46,6 @@ module.exports = {
     },
     adminLogin: (req, res) => {
         adminName(req.body).then((response) => {
-            console.log(req.body);
             if (response.status) {
                 req.session.loggedIn = true
                 req.session.admin = response.admin
@@ -112,7 +111,6 @@ module.exports = {
     },
     coupons: (req, res) => {
         couponCard().then((data) => {
-            console.log(data);
             res.render("admin/coupons", { layout, data })
         })
     },

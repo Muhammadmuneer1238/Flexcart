@@ -10,7 +10,6 @@ const orderModels = require("../models/orderSchema")
 
 module.exports = {
     adminsignup: (userData) => {
-        console.log(userData);
         return new Promise(async (resolve, reject) => {
             let password = await bcrypt.hash(userData.password, 10);
             var adminDetails = new adminModel({
@@ -36,14 +35,11 @@ module.exports = {
                     if (status) {
                         response.status = true
                         response.admin=admin
-                        console.log("response..../////",response);
-                        resolve(response)
-                        console.log("admin");
-                    }
+                        resolve(response)                
+                        }
                     else {
                         
                         resolve({status:false})
-                        console.log("admin");
                     }
 
                 })
@@ -57,7 +53,6 @@ module.exports = {
 
     },
     couponInsert: (couponId) => {
-        console.log(couponId);
         return new Promise((resolve, reject) => {
             var coupon = new couponModels({
                 couponId: couponId.couponId,
@@ -87,7 +82,6 @@ module.exports = {
     },
     StatusOrder: (orderStatus, orderId) => {
         return new Promise(async (resolve, reject) => {
-            console.log(orderId,'lala');
             await orderModels.updateOne({ _id: orderId },
                 { $set: { "OrderAddress.status": orderStatus } })
             let order = await orderModels.findOne({ _id: orderId })

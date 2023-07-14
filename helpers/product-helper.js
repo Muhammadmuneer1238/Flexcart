@@ -17,7 +17,6 @@ module.exports = {
 
 
             Products.save()
-            console.log(Products);
             resolve()
         })
 

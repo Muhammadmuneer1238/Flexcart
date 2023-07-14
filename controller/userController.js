@@ -70,7 +70,8 @@ module.exports = {
 
             }
             else {
-                res.redirect("/error")
+                alert('Login with your Email Link');
+                res.redirect("/")
             }
         })
     },

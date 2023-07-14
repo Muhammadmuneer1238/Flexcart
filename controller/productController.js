@@ -50,9 +50,7 @@ module.exports = {
     editPro: (req, res) => {
         let proId = req.params.id
         let admin = req.session.admin
-        console.log("ethiiii");
         editProductpage(proId).then((product) => {
-            console.log("product", product);
             res.render("admin/productEdit", { product, layout })
 
         })

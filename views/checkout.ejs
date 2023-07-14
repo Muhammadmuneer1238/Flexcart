@@ -309,7 +309,6 @@
         }).showToast();
 
       }
-        console.log(response);
       },
     });
   }
@@ -321,9 +320,7 @@
       data: $('#submitCheckoutPage').serialize(),
       method:'post',
       success:(response)=>{
-        console.log("response in placeOrder",response);
         if(response.codStatus){
-        console.log("res",response)
         location.href="/placed"
       }else{
         razorpaypayment(response)
@@ -335,7 +332,6 @@
   })
    function razorpaypayment (order) 
        {
-            console.log("orderrererer", order);
             var options = {
                 "key":'rzp_test_1WQClS1xPA1rwL', // Enter the Key ID generated from the Dashboard
                 "amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
