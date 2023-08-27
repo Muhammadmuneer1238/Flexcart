@@ -7,9 +7,12 @@ const
         deleteWishitem, contact, soon, faq, checkoutPage,
         defaultAddress, setDefaultAdd,prodetail,selectAddress,
         setButtonDefault,applyCouponButton,placeOrder,
-        orderDetail,buttonReturn,cancelOrder,razorpayPayment,placed
+        orderDetail,buttonReturn,cancelOrder,razorpayPayment,placed,editProfile
     } = require('../controller/userController');
 var router = express.Router();
+
+  
+
 const verifylogin = (req, res, next) => {
     if (req.session.loggedIn) {
         next()
@@ -46,5 +49,6 @@ router.post("/returnButton",buttonReturn)
 router.post("/orderCancel",cancelOrder)
 router.post("/verify-payment",razorpayPayment)
 router.get("/placed",verifylogin,placed)
+router.get("/profile",verifylogin,editProfile)
 module.exports = router;
 

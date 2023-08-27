@@ -40,11 +40,13 @@
           
           <div class="header-right">
             <ul class="top-menu">
+
+
               <li>
                 <a href="#">Links</a>
                 <ul>
                   <% if(locals.user){%>
-                  <li><a href="/wishlistPage"><i class="icon-heart-o"></i>My Wishlist <span>(!)</span></a></li>
+                  <li><a href="/wishlistPage">My Wishlist<i class="icon-heart-o"><span><%=locals.wishlistCount%></span></i></a></li>
                   
                   <li>
                     <a href="/orderDetails">My Orders</a>
@@ -53,8 +55,9 @@
                   <li><a href="/contact">Contact Us</a></li>
                   <li>
                     <% if(locals.user){ %>
-                      <a><i class="icon-user"></i>
+                      <a href="/profile"><i class="icon-user"></i>
                     <%= user.username%></a>
+
                     <li><a href="/logout">Log out</a></li>
                     <% } else { %> 
                       <a href="#signin-modal" data-toggle="modal">
@@ -213,7 +216,8 @@
             <div class="dropdown cart-dropdown">
               <a href="/cart" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false" data-display="static">
                   <i class="icon-shopping-cart"></i>
-                  <span class="cart-count">!</span>
+                 
+                  <span class="cart-count"><%=locals.cartItem%> </span>
               </a><!-- End .cart-dropdown -->
           </div><!-- End .header-right -->
           <%}%>
@@ -223,6 +227,8 @@
 </head>
 <body>
 <%-body%>
+
+
 
  <!-- Plugins JS File -->
  <script src="assets/js/jquery.min.js"></script>
@@ -318,7 +324,7 @@
 
     <div class="footer-bottom">
       <div class="container">
-        <p class="footer-copyright">Copyright © 2019 flexcart Store. All Rights Reserved.</p><!-- End .footer-copyright -->
+        <p class="footer-copyright">Copyright © 2022 flexcart Store. All Rights Reserved.</p><!-- End .footer-copyright -->
         <figure class="footer-payments">
           <img src="assets/images/payments.png" alt="Payment methods" width="272" height="20">
         </figure><!-- End .footer-payments -->
@@ -538,7 +544,7 @@
 
                                   <div class="form-footer">
                                       <button type="submit" class="btn btn-outline-primary-2">
-                                          <span>LOG IN</span>
+                                          <span>LOG-IN</span>
                                           <i class="icon-long-arrow-right"></i>
                                       </button>
 

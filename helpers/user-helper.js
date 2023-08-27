@@ -19,6 +19,7 @@ var instance = new Razorpay({
     key_id: process.env.RAZORPAY_KEYID,
     key_secret: process.env.RAZORPAY_KEYSECRET
 })
+
 module.exports = {
 
     signUp: (userData) => {
@@ -30,7 +31,7 @@ module.exports = {
             await userModel.findOne({ email: userData.email }).then(async (status) => {
                 if (status) {
 
-                    response.status = true
+                    response.status = true //User found with same email status is set to true and resolve the status
                     resolve(response)
                 }
                 else {
@@ -57,8 +58,25 @@ module.exports = {
                     let mailData = {
                         from: 'flexcartshopping@gmail.com>', // sender address
                         to: userData.email,
-                        subject: "Email verification for the Flexkart account", // Subject line
-                        text: `Please click on the following link to verify your email address:http://flexcart.cloud/verify?token=${token}&username=${username}&email=${email}&mobile=${mobile}&password=${password}`,
+                        subject: "Email verification Link from Flexcart", // Subject line
+                        html: `
+                        <html>
+                          <head>
+                            <title>Welcome to Flexcart</title>
+                          </head>
+                          <body>
+                            <h1>Hello ${username}, </h1>
+                            <p>Please click on the following link to verify your email address :
+                            http://localhost:3000/verify?token=${token}&username=${username}&email=${email}&mobile=${mobile}&password=${password}</p>
+                            <img src="assets/images/demos/demo-7/logo2.png" alt="Example Image" />
+                            <p>You should change your password for your security.
+                            Click the above link and verify your email and then click here http://flexcart.cloud/profile or click on your  username<p>
+                            <p>Thanks ,<br>Team Flexcart<p>
+                            
+                          </body>
+                        </html>
+                      `,
+
                     };
                     transporter.sendMail(mailData, function (error, info) {
                         if (error) {
@@ -170,6 +188,7 @@ module.exports = {
     },
     getCartpro: (userId) => {
         return new Promise(async (resolve, reject) => {
+
             await cartModel.findOne({ userId: userId })
                 .populate("cartProduct.productId").then((data) => {
                     if (data) {
@@ -304,7 +323,7 @@ module.exports = {
                 })
                     .then(async (datas) => {
                         const data = await datas.userAddress.find(obj => obj.status == true);
-                       await cartModel.findOne({ userId: userId })
+                        await cartModel.findOne({ userId: userId })
                             .populate("cartProduct.productId").then((carts) => {
                                 let cart = carts.cartProduct
                                 let total = cart.reduce((total, cart) => {

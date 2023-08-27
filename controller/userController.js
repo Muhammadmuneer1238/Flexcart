@@ -14,6 +14,8 @@ const { response } = require('express');
 
 module.exports = {
     index: (req, res) => {
+
+
         userHelper.productView().then((product) => {
             if (req.session.user) {
                 let user = req.session.user
@@ -62,7 +64,7 @@ module.exports = {
     },
 
     userSignup: (req, res) => {
-
+        console.log("userdata", req.body.mobile);
         userHelper.signUp(req.body).then((response) => {
             if (response.status) {
                 req.session.loginErr = true
@@ -70,12 +72,12 @@ module.exports = {
 
             }
             else {
-                alert('Login with your Email Link');
                 res.redirect("/")
             }
         })
     },
     verifyemail: (req, res) => {
+
         try {
             const token = req.query.token;
             const username = req.query.username;
@@ -96,7 +98,8 @@ module.exports = {
                         });
                         userDetails.save().then((response) => {
                             req.session.loggedIn = true
-                            req.session.user = response.user
+                            req.session.user = response
+                            console.log("response", response)
                             res.redirect("/");
                         });
                     })
@@ -104,7 +107,8 @@ module.exports = {
             })
         }
         catch {
-            res.redirect('/error');
+
+            res.redirect('/login');
         }
     },
     Cart: (req, res) => {
@@ -385,15 +389,20 @@ module.exports = {
     },
     razorpayPayment: (req, res) => {
         let orderId = req.body.order.receipt
-                userHelper.verifyPayment(req.body).then(() => {
+        userHelper.verifyPayment(req.body).then(() => {
             userHelper.changeStatus(orderId).then(() => {
                 res.json({ status: true })
             })
         }).catch((err) => {
             res.json({ status: false })
         })
-},
+    },
     placed: (req, res) => {
         res.render("placed")
+    },
+    editProfile: (req, res) => {
+        let user = req.session.user
+        
+        res.render("profile", { user });
     }
 }
