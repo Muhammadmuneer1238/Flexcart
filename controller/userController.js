@@ -14,8 +14,6 @@ const { response } = require('express');
 
 module.exports = {
     index: (req, res) => {
-
-
         userHelper.productView().then((product) => {
             if (req.session.user) {
                 let user = req.session.user
@@ -279,7 +277,12 @@ module.exports = {
     prodetail: (req, res) => {
         try {
             let user = req.session.user
-            res.render("prodetail", { user })
+            let id = req.query.id
+            userHelper.proDetailPage(user, id).then((products) => {
+                console.log("Product details",products)
+                res.render("prodetail", { user, products })
+            })
+
         }
         catch {
 
@@ -402,7 +405,7 @@ module.exports = {
     },
     editProfile: (req, res) => {
         let user = req.session.user
-        
+
         res.render("profile", { user });
     }
 }

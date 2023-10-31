@@ -1,13 +1,13 @@
 const { default: mongoose } = require("mongoose");
 const db = require("../config/connection")
 var productSchema =new mongoose.Schema({
+
     productname: {
         type: String,
         required:true
     },
     ProdDesc: {
         type: String,
-        
     },
 
    brand : {

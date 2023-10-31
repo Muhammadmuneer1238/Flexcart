@@ -484,6 +484,16 @@ module.exports = {
             resolve();
         });
 
+    },
+    proDetailPage: (user, proId) => {
+        console.log("Comeon iddd",proId)
+        return new Promise(async (resolve, reject) => {
+            await productModels.findOne({ _id: proId }).then((products) => {
+                console.log("Helper data",products)
+                resolve(products);
+            })
+        })
+
     }
 
 
@@ -491,12 +501,13 @@ module.exports = {
 
 
 
+
 }
-    // viewOrders: () => {
-    //     return new Promise(async (resolve, reject) => {
-    //         await orderModels.updateOne({ _id: orderId })
-    //     })
-    // }
+// viewOrders: () => {
+//     return new Promise(async (resolve, reject) => {
+//         await orderModels.updateOne({ _id: orderId })
+//     })
+// }
 
 
 
