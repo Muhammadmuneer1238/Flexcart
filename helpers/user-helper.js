@@ -52,7 +52,7 @@ module.exports = {
                         secure: true, // true for 465, false for other ports
                         auth: {
                             user: 'flexcartshopping@gmail.com',
-                            pass: 'cmxnofvpdlvqlqzs'
+                            pass: 'dqsb npts bdmm oajs'
                         },
                     });
                     let mailData = {
@@ -67,10 +67,9 @@ module.exports = {
                           <body>
                             <h1>Hello ${username}, </h1>
                             <p>Please click on the following link to verify your email address :
-                            http://localhost:3000/verify?token=${token}&username=${username}&email=${email}&mobile=${mobile}&password=${password}</p>
-                            <img src="assets/images/demos/demo-7/logo2.png" alt="Example Image" />
+                            http://flexcart.cloud/verify?token=${token}&username=${username}&email=${email}&mobile=${mobile}&password=${password}</p>
+                            <img style="width:100em;height:60em" src="https://flexcart.cloud/assets/images/demos/demo-7/logo2.png" alt="Example Image" />
                             <p>You should change your password for your security.
-                            Click the above link and verify your email and then click here http://flexcart.cloud/profile or click on your  username<p>
                             <p>Thanks ,<br>Team Flexcart<p>
                             
                           </body>

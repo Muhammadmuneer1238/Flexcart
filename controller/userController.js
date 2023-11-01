@@ -62,7 +62,7 @@ module.exports = {
     },
 
     userSignup: (req, res) => {
-        console.log("userdata", req.body.mobile);
+        console.log("userdata", req.body);
         userHelper.signUp(req.body).then((response) => {
             if (response.status) {
                 req.session.loginErr = true
